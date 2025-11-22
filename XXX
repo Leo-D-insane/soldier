@@ -1,0 +1,109 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace thinger.Mychapter5
+{
+    internal class Program
+    {
+
+        #region 使用面向对象的方式实现计算器功能
+        //static void Main(string[] args)
+        //{
+        //    //首先要创建类的对象
+        //    Calculator myCal = new Calculator();
+
+        //    Console.Write("请输入一个整数：");
+        //    myCal.num1 = int.Parse(Console.ReadLine());
+        //    Console.Write("请输入另一个整数：");
+        //    myCal.num2 = Convert.ToInt32(Console.ReadLine());
+
+        //    Console.Write("请输入运算类型：");
+        //    string type = Console.ReadLine();
+        //    if (type == "+")
+        //    {
+        //        int result = myCal.Add();
+        //        Console.WriteLine("num1 + num2 = {0}", result);
+        //    }
+        //    else if (type == "-")
+        //    {
+        //        int result = myCal.Sub();
+        //        Console.WriteLine("num1 - num2 = {0}", result);
+        //    }
+        //    else if (type == "*")
+        //    {
+        //        int result = myCal.Mul();
+        //        Console.WriteLine("num1 * num2 = {0}", result);
+        //    }
+        //    else if (type == "/")
+        //    {
+        //        int result = myCal.Div();
+        //        Console.WriteLine("num1 / num2 = {0}", result);
+        //    }
+
+        //    Console.ReadLine();
+        //}
+        #endregion
+
+        #region 使用面向过程的方式实现计算器功能
+        //Console.Write("请输入一个整数：");
+        //int num1 = int.Parse(Console.ReadLine());
+        //Console.Write("请输入另一个整数：");
+        //int num2 = Convert.ToInt32(Console.ReadLine());
+        //Console.WriteLine("请输入运算类型：");
+        //string type = Console.ReadLine();
+        //if (type == "+")
+        //{
+        //    int result = num1 + num2;
+        //    Console.WriteLine("num1 + num2 = {0}", result);
+        //    Console.WriteLine($"num1 + num2 = {result}");
+        //}
+        //else if (type == "-")
+        //{
+        //    int result = num1 - num2;
+        //    Console.WriteLine("num1 - num2 = ", +result);
+        //}
+        //else if (type == "*")
+        //{
+        //    int result = num1 * num2;
+        //    Console.WriteLine("num1 * num2 = {0}", result);
+        //}
+        //else if (type == "/")
+        //{
+        //    int result = num1 / num2;
+        //    Console.WriteLine($"num1 / num2 = {result}");
+        //}
+        //else
+        //{
+        //    Console.WriteLine("不支持其他的运算类型");
+        //}
+        #endregion
+
+        #region 类的组成结构和对象使用
+        //类的组成结构：属性，方法，构造函数，索引器，
+        //面向对象（包括面向对象分析，面向对象设计，面向对象编程
+
+        static void Main(string[] args)
+        {
+            // 使用对象初始化器简化对象初始化
+            ModbusRTV rtu = new ModbusRTV
+            {
+                PortName = "COM10"
+            };
+            int baudRate = rtu.BaudRate; //读取属性值
+            Console.WriteLine($"串口波特率：{baudRate}");
+
+            //调用方法
+            string msg = rtu.Open();
+            Console.WriteLine(msg);
+            msg = rtu.Close();
+            Console.WriteLine(msg);
+
+            Console.ReadLine();
+        }
+        #endregion
+    }
+
+}
